@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>StarIOExt Manager</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div padding>
+    <h1 class="{{status}}"><blink>{{status}}</blink></h1>
+
+    <h5>Cover: {{coverStatus}}</h5>
+    <h5>Paper: {{paperStatus}}</h5>
+    <h5>Cash Drawer: {{drawerStatus}}</h5>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="printRawText()" color="light">
+          Raw Text
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="printRasterReceipt()" color="light">
+          Raster Receipt
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="openCashDrawer()" color="light">
+          Open CashDrawer
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="print()" color="light">
+          Print ICommandBuilder
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="printHorizontalTab()" color="light">
+          3" Horizontal Tab
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="printQRCode()" color="light">
+          QRCode
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="printFromCamera()" color="light">
+          Camera (NOT WORKING)
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="printFromLibrary()" color="light">
+          Photo Library (NOT WORKING)
+        </button>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <button ion-button full (click)="appendBitmap()" color="light">
+          Bitmap(ICommandBuilder) (NOT WORKING)
+        </button>
+      </ion-col>
+      <ion-col>
+        <button ion-button full (click)="disconnect()" color="light">
+          Disconnect
+        </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

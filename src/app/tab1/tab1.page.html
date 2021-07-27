@@ -1,8 +1,6 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
+    <ion-title> Tab 1 </ion-title>
   </ion-toolbar>
 </ion-header>
 
@@ -12,6 +10,70 @@
       <ion-title size="large">Tab 1</ion-title>
     </ion-toolbar>
   </ion-header>
+  <ion-list>
+    <ion-item-group>
+      <ion-item-divider color="light">Destination Device</ion-item-divider>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+      <ion-item *ngIf="defaultPrinter?.portName" (click)="printerTypePopup()">
+        <h2>{{defaultPrinter?.modelName}}</h2>
+        <p>{{defaultPrinter?.portName}} ({{defaultPrinter?.macAddress}})</p>
+        <p>Emulation: {{defaultPrinter?.emulation}}</p>
+      </ion-item>
+      <ion-item *ngIf="!defaultPrinter?.portName" (click)="printerTypePopup()">
+        <p>Select a printer...</p>
+      </ion-item>
+    </ion-item-group>
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Printer SMPort StarIO-SDK Sample</ion-item-divider
+      >
+    </ion-item-group>
+
+    <ion-item (click)="printRawText()">
+      <p>Print Raw Text Sample</p>
+    </ion-item>
+    <ion-item (click)="printRasterReceipt()">
+      <p>Print Raster Receipt</p>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider color="light">
+        Printer ICommandBuilderInterface Sample</ion-item-divider
+      >
+    </ion-item-group>
+
+    <ion-item (click)="print()">
+      <p>Print</p>
+    </ion-item>
+    <ion-item (click)="printHorizontalTab()">
+      <p>Print (Horizontal Tabs example 3")</p>
+    </ion-item>
+    <ion-item (click)="printQRCode()">
+      <p>Print (QRCode)</p>
+    </ion-item>
+
+    <!-- <ion-item-group>
+      <ion-item-divider color="light"
+        >Printer StarIOextManager Sample</ion-item-divider
+      >
+    </ion-item-group>
+    <ion-item (click)="showStarIOExtManagerPage()">
+      <p>Sample</p>
+    </ion-item> -->
+
+    <ion-item-group>
+      <ion-item-divider color="light">Cash Drawer</ion-item-divider>
+    </ion-item-group>
+    <ion-item (click)="openCashDrawer()">
+      <p>Sample</p>
+    </ion-item>
+
+    <ion-item-group>
+      <ion-item-divider color="light">Device Status</ion-item-divider>
+    </ion-item-group>
+    <ion-item (click)="showPrinterStatus()">
+      <p>Sample</p>
+    </ion-item>
+  </ion-list>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
 </ion-content>
