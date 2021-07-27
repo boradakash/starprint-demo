@@ -5,7 +5,7 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-        <string>photo-gallery</string>
+	<string>photo-gallery</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -50,5 +50,11 @@
 	</array>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<true/>
+	<key>NSBluetoothPeripheralUsageDescription</key>
+       <string>To connect to Star Micronic's Devices</string>
+	   <key>UISupportedExternalAccessoryProtocols</key>
+       <array>
+       <string>jp.star-m.starpro</string>
+       </array>
 </dict>
 </plist>
