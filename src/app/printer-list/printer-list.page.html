@@ -13,16 +13,22 @@
 </ion-header>
 
 <ion-content>
+  <ion-list>
+    <ion-radio-group name="printer" [(ngModel)]="selectedPrinter.printer" (ionChange)="selected()">
+      <ion-list-header>
+        <ion-label> List </ion-label>
+      </ion-list-header>
+
+      <ion-item *ngFor="let printer of printerList">
+        <ion-label>
+          <h2>{{printer.modelName}}</h2>
+          <p>{{printer.portName}} ({{printer.macAddress}})</p>
+        </ion-label>
+        <ion-radio [value]="printer" ></ion-radio>
+      </ion-item>
+    </ion-radio-group>
+  </ion-list>
+
   <ion-item-group radio-group [(ngModel)]="selectedPrinter.printer">
-    <ion-item-divider color="light">List</ion-item-divider>
-    <ion-item *ngFor="let printer of printerList">
-      <ion-label>
-        <h2>{{printer.modelName}}</h2>
-        <p>{{printer.portName}} ({{printer.macAddress}})</p>
-      </ion-label>
-      <ion-radio [value]="printer" (ionSelect)="selected()"></ion-radio>
-    </ion-item>
   </ion-item-group>
 </ion-content>
-
-

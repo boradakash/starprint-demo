@@ -46,8 +46,8 @@ export class PrinterListPage implements OnInit {
         this.printerList = Printers;
         console.log(this.printerList);
       })
-      .catch((error) => {
-        loading.dismiss();
+      .catch(async (error) => {
+        await loading.dismiss();
         alert('Error finding printers ' + error);
       });
   }
@@ -61,7 +61,6 @@ export class PrinterListPage implements OnInit {
     inputArray.push({ type: 'radio', label: 'mPOP', value: 'StarPRNT' });
     inputArray.push({ type: 'radio', label: 'FVP10', value: 'StarLine' });
     inputArray.push({ type: 'radio', label: 'TSP100', value: 'StarGraphic' });
-    inputArray.push({ type: 'radio', label: 'TSP650II', value: 'StarLine' });
     inputArray.push({ type: 'radio', label: 'TSP650II', value: 'StarLine' });
     inputArray.push({ type: 'radio', label: 'TSP700II', value: 'StarLine' });
     inputArray.push({ type: 'radio', label: 'TSP800II', value: 'StarLine' });

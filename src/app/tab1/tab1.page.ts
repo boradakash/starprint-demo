@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { StarPRNT } from '@ionic-native/star-prnt/ngx';
-import { Platform, AlertController, NavController,ModalController } from '@ionic/angular';
+import {
+  Platform,
+  AlertController,
+  NavController,
+  ModalController,
+} from '@ionic/angular';
 import { PrinterService } from '../../services/printer.service';
 import { ReceiptService } from '../../services/receipt.service';
 import { AlertService } from '../../services/alert.service';
@@ -71,25 +76,47 @@ export class Tab1Page {
         {
           text: 'Ok',
           handler: async (portType) => {
-            const modal = await this.modalController.create({
-              component: PrinterListPage,
-              componentProps: {
-                portType: portType,
-              },
-            });
-            await modal.present();
-
-            // this.navContoller.navigateForward('printer-list', {
-            //   state: {
+            // const modal = await this.modalController.create({
+            //   component: PrinterListPage,
+            //   componentProps: {
             //     portType: portType,
             //   },
             // });
+            // await modal.present();
+
+            await this.portDiscovery(portType);
           },
         },
       ],
     });
 
     await alert.present();
+  }
+
+  async portDiscovery(portType: string) {
+    let loading = await this.alertService.createLoading('Communicating');
+    await loading.present();
+    this.printerService
+      .portDiscovery(portType)
+      .then(async (Printers) => {
+        await loading.dismiss();
+        // this.printerList = [];
+        // this.printerList = Printers;
+        console.log(Printers);
+        if (Printers.length === 0) {
+          await this.alertService.createAlert('Please select the printer');
+        }
+        let selectedPrinter = Printers[0];
+        if (selectedPrinter) {
+          this.printerService.saveDefaultPrinter(selectedPrinter, 'StarLine');
+        } else {
+          await this.alertService.createAlert('Please select the printer');
+        }
+      })
+      .catch(async (error) => {
+        await loading.dismiss();
+        await this.alertService.createAlert('Error finding printers ' + error);
+      });
   }
 
   async printRawText() {
